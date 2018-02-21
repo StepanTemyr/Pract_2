@@ -1,0 +1,58 @@
+insert into typeperson values (1,'Donald',1,3,6);
+insert into typeperson values (2,'Scwartz',1,4,8);
+insert into typeperson values (3,'Lisa',0,2,3);
+insert into typeperson values (4,'Sonia',0,1,2);
+insert into typeperson values (5,'Rexar',1,5,9);
+insert into typeperson values (6,'Guldan',1,5,5);
+insert into typeperson values (7,'Garrosh',1,4,1);
+
+
+insert into typerace values (1,'Gnome');
+insert into typerace values (2,'Elf');
+insert into typerace values (3,'Human');
+insert into typerace values (4,'Dwarf');
+insert into typerace values (5,'Orc');
+
+
+
+insert into typerace values (1,'Warrion');
+insert into typerace values (2,'Mage');
+insert into typerace values (3,'Rogue');
+insert into typerace values (4,'Priest');
+insert into typerace values (5,'Warlock');
+insert into typerace values (6,'Paladin');
+insert into typerace values (7,'Shaman');
+insert into typerace values (8,'Druid');
+insert into typegrade values (9,'Hunter');
+
+select * from typerace;
+select * from typeperson;
+select * from typegrade;
+
+-------------------------------------
+
+CREATE TABLE `TypeRace` (
+	`idRace` int(200) NOT NULL AUTO_INCREMENT,
+	`Race` varchar(200) NOT NULL,
+	PRIMARY KEY (`idRace`)
+);
+
+CREATE TABLE `TypeGrade` (
+	`idGrade` int(200) NOT NULL AUTO_INCREMENT,
+	`Grade` varchar(200) NOT NULL,
+	PRIMARY KEY (`idGrade`)
+);
+
+CREATE TABLE `TypePerson` (
+	`idPerson` int(200) NOT NULL AUTO_INCREMENT,
+	`Name` varchar(200) NOT NULL,
+	`Sex` bool NOT NULL,
+	`idRace` int(200) NOT NULL,
+	`idGrade` int(200) NOT NULL,
+	PRIMARY KEY (`idPerson`)
+);
+
+ALTER TABLE `TypePerson` ADD CONSTRAINT `TypePerson_fk0` FOREIGN KEY (`idRace`) REFERENCES `TypeRace`(`idRace`);
+
+ALTER TABLE `TypePerson` ADD CONSTRAINT `TypePerson_fk1` FOREIGN KEY (`idGrade`) REFERENCES `TypeGrade`(`idGrade`);
+
